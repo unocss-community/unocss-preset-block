@@ -1,4 +1,4 @@
-# unocss-preset-block [![npm](https://img.shields.io/npm/v/unocss-preset-starter)](https://npmjs.com/package/unocss-preset-block)
+# unocss-preset-block [![npm](https://img.shields.io/npm/v/unocss-preset-block)](https://npmjs.com/package/unocss-preset-block)
 
 UnoCSS Preset Block.
 
