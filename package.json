@@ -46,9 +46,10 @@
     "build": "unbuild",
     "stub": "unbuild --stub",
     "prepublishOnly": "pnpm run build",
-    "release": "bumpp --commit --push --tag && pnpm publish",
+    "release": "bumpp --commit --push --tag && pnpm publish --registry=https://registry.npmjs.org",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "prepare": "npx simple-git-hooks",
     "test": "vitest",
     "dev": "vitest",
     "up:deps": "taze major"
@@ -62,10 +63,20 @@
     "@types/node": "^20.9.3",
     "bumpp": "^9.2.0",
     "eslint": "^8.54.0",
+    "lint-staged": "^15.1.0",
+    "simple-git-hooks": "^2.9.0",
     "taze": "^0.12.0",
     "typescript": "5.2.2",
     "unbuild": "^2.0.0",
     "unocss": "^0.57.7",
     "vitest": "^0.34.6"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*": [
+      "eslint --fix"
+    ]
   }
 }

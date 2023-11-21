@@ -18,7 +18,6 @@ function cartesian<T>(arr: T[][]): T[][] {
 }
 
 describe('presetBlock', () => {
-  
   const uno = createGenerator({
     presets: [presetBlock({
       ignores: [
@@ -31,14 +30,13 @@ describe('presetBlock', () => {
   })
 
   it('disable unit', async () => {
-
     const dPrefix = ['p', 'm', 'rounded', 'rd', 'space', 'inset']
-    const udPrefix =  ['pa', 'ma', 'w', 'h', 'min-w', 'min-h',"top","bottom","left","right"]
+    const udPrefix = ['pa', 'ma', 'w', 'h', 'min-w', 'min-h', 'top', 'bottom', 'left', 'right']
     const directions = ['x', 'y', 'l', 't', 'b', 'r']
 
-    const prefix =[...cartesian([dPrefix,['-',''], directions]).map(r=>r.join("")), ...udPrefix]
+    const prefix = [...cartesian([dPrefix, ['-', ''], directions]).map(r => r.join('')), ...udPrefix]
     const units = ['rem', 'px']
-    const numbers = ['1', '.5','0','0.23','-1','-.5','-0.23']
+    const numbers = ['1', '.5', '0', '0.23', '-1', '-.5', '-0.23']
     const list = cartesian([prefix, ['-'], numbers, units]).map(r => r.join(''))
     expect(list.every(l => uno.isBlocked(l))).toBe(true)
   })
