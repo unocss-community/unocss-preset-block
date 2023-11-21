@@ -1,7 +1,7 @@
 {
   "name": "unocss-preset-block",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "packageManager": "pnpm@8.10.5",
   "description": "<description>",
   "author": "unpreset <https://github.com/unpreset>",
@@ -50,7 +50,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest",
-    "dev":"vitest",
+    "dev": "vitest",
     "up:deps": "taze major"
   },
   "peerDependencies": {
