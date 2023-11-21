@@ -1,28 +1,36 @@
+import type { BlocklistRule } from '@unocss/core'
 import { definePreset } from '@unocss/core'
 
-export interface StarterOptions {
-  span?: number
+export interface PresetBlockOptions {
+  ignores?: BlocklistRule[]
 }
 
-export const presetStarter = definePreset((_options: StarterOptions = {}) => {
-  const span = _options.span || 12
+export const presetBlock = definePreset((_options: PresetBlockOptions = {}) => {
+  const blockIgnores = _options.ignores ?? []
+  const createFilter = (selector: string) => {
+    return (rule: BlocklistRule) => {
+      if (typeof rule === 'function')
+        return rule(selector)
+      return !!selector.match(rule)
+    }
+  }
+
+  const regexes = [
+    /^((p|m|rounded|rd|space|inset)(-?[xyrltb])?|pa|ma|top|bottom|left|right|w|h|min-w|min-h)-?((\.\d+)|(\d+)(\.\d+)?)(rem|px)$/,
+    /^text-(size-)?[0-9]$/,
+    /\w+--((\.\d+)|(\d+)(\.\d+)?)/,
+  ]
+
+  const blockHandler = (selector: string) => {
+    if (blockIgnores.some(createFilter(selector)))
+      return false
+    return regexes.some(regex => regex.test(selector))
+  }
 
   return {
-    name: 'unocss-preset-starter',
-    // Customize your preset here
-    rules: [
-      ['custom-rule', { color: 'red' }],
-      [
-        /col-(\d+)/,
-        ([_, s]) => ({ width: `calc(${s} / ${span} * 100%)` }),
-        { autocomplete: 'col-<span>' },
-      ],
+    name: 'unocss-preset-block',
+    blocklist: [
+      blockHandler,
     ],
-    // Customize AutoComplete
-    autocomplete: {
-      shorthands: {
-        span: Array.from({ length: span }, (_, i) => `${i + 1}`),
-      },
-    },
   }
 })

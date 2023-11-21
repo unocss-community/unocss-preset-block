@@ -1,24 +1,24 @@
 {
-  "name": "unocss-preset-starter",
+  "name": "unocss-preset-block",
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@8.7.0",
   "description": "<description>",
   "author": "unpreset <https://github.com/unpreset>",
   "license": "MIT",
-  "homepage": "https://github.com/unpreset/unocss-preset-starter#readme",
+  "homepage": "https://github.com/unpreset/unocss-preset-block#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/unpreset/unocss-preset-starter.git"
+    "url": "git+https://github.com/unpreset/unocss-preset-block.git"
   },
   "bugs": {
-    "url": "https://github.com/unpreset/unocss-preset-starter/issues"
+    "url": "https://github.com/unpreset/unocss-preset-block/issues"
   },
   "keywords": [
     "unocss",
     "unpreset",
     "unocss-preset",
-    "unocss-preset-starter"
+    "unocss-preset-block"
   ],
   "sideEffects": false,
   "exports": {
@@ -55,7 +55,7 @@
     "deploy": "vite build playground"
   },
   "peerDependencies": {
-    "@unocss/core": "< 1"
+    "@unocss/core": "^0.57.6"
   },
   "devDependencies": {
     "@antfu/eslint-config": "1.0.0-beta.10",
@@ -66,7 +66,7 @@
     "eslint": "^8.50.0",
     "typescript": "5.2.2",
     "unbuild": "^2.0.0",
-    "unocss": "^0.56.2",
+    "unocss": "^0.57.6",
     "vite": "^4.4.9",
     "vitest": "^0.34.5"
   }

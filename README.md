@@ -1,28 +1,28 @@
-# unocss-preset-starter [![npm](https://img.shields.io/npm/v/unocss-preset-starter)](https://npmjs.com/package/unocss-preset-starter)
+# unocss-preset-block [![npm](https://img.shields.io/npm/v/unocss-preset-starter)](https://npmjs.com/package/unocss-preset-block)
 
-UnoCSS preset quickstart template.
+UnoCSS preset block.
 
 ## Features
 - 🔥 Description of the preset
 
 ## Usage
 ```shell
-pnpm i -D unocss-preset-starter unocss
+pnpm i -D unocss-preset-block unocss
 ```
 
 ```ts
 // uno.config.ts
 import { defineConfig } from 'unocss'
-import { presetStarter } from 'unocss-preset-starter'
+import { presetBlock } from 'unocss-preset-block'
 
 export default defineConfig({
   presets: [
     // ...
-    presetStarter(),
+    presetBlock(),
   ],
 })
 ```
 
 ## License
 
-[MIT](./LICENSE) License © 2023 [zyyv](https://github.com/zyyv)
+[MIT](./LICENSE) License © 2023 [Chizuki](https://github.com/chizukicn)
