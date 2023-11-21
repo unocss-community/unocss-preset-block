@@ -1,9 +1,9 @@
 # unocss-preset-block [![npm](https://img.shields.io/npm/v/unocss-preset-starter)](https://npmjs.com/package/unocss-preset-block)
 
-UnoCSS preset block.
+UnoCSS Preset Block.
 
 ## Features
-- 🔥 Description of the preset
+- 🔥 Disable non-standard unocss class names 
 
 ## Usage
 ```shell
@@ -22,6 +22,30 @@ export default defineConfig({
   ],
 })
 ```
+
+## Rules
+1. Disable px/rem unit
+```html
+<!-- bad -->
+<div class="m-1rem">...</div>
+<!-- good -->
+<div class="m-4">...</div>
+```
+2. Disable magic-number
+```html
+<!-- bad -->
+<div class="text-3">...</div>
+<!-- good -->
+<div class="text-xs">...</div>
+```
+3. Disable consecutive dashes
+```html
+<!-- bad -->
+<div class="m--3">...</div>
+<!-- good -->
+<div class="-m-3">...</div>
+```
+
 
 ## License
 
