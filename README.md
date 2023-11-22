@@ -24,26 +24,43 @@ export default defineConfig({
 ```
 
 ## Rules
-1. Disable px/rem unit
+Disable px/rem unit
 ```html
 <!-- bad -->
 <div class="m-1rem">...</div>
 <!-- good -->
 <div class="m-4">...</div>
 ```
-2. Disable magic-number
+Disable magic-number
 ```html
 <!-- bad -->
 <div class="text-3">...</div>
 <!-- good -->
 <div class="text-xs">...</div>
 ```
-3. Disable consecutive dashes
+Disable consecutive dashes
 ```html
 <!-- bad -->
 <div class="m--3">...</div>
 <!-- good -->
 <div class="-m-3">...</div>
+```
+
+## Lint
+Recommended to work with [@unocss/eslint-plugin](https://github.com/unocss/unocss/tree/main/packages/eslint-plugin)
+
+```js
+// .eslintrc.js
+module.exports = {
+  plugins: [
+    // ...
+    '@unocss',
+  ],
+  rules: {
+    // ...
+    '@unocss/blocklist': ['error']
+  },
+}
 ```
 
 
