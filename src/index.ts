@@ -16,7 +16,7 @@ export const presetBlock = definePreset((_options: PresetBlockOptions = {}) => {
   }
 
   const regexes = [
-    /^((p|m|rounded|rd|space|inset)(-?[xyrltb])?|pa|ma|top|bottom|left|right|w|h|min-w|min-h)-?((\.\d+)|(\d+)(\.\d+)?)(rem|px)$/,
+    /^((p|m|rounded|rd|space|inset)(-?[xyrltb])?|pa|ma|top|bottom|left|right|w|h|min-w|min-h|lh|leading)-?((\.\d+)|(\d+)(\.\d+)?)(rem|px)$/,
     /^text-(size-)?[0-9]$/,
     /\w+--((\.\d+)|(\d+)(\.\d+)?)/,
   ]

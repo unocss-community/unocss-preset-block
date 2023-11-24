@@ -1,5 +1,6 @@
-import { createGenerator } from 'unocss'
+import { createGenerator } from '@unocss/core'
 import { describe, expect, it } from 'vitest'
+import { presetUno } from 'unocss'
 import { presetBlock } from '../src'
 
 function cartesian<T>(arr: T[][]): T[][] {
@@ -17,13 +18,39 @@ function cartesian<T>(arr: T[][]): T[][] {
   )
 }
 
+function createBlockMatcher(uno: ReturnType<typeof createGenerator>) {
+  const blocked = new Set<string>()
+  const matchBlocked = async (raw: string) => {
+    if (blocked.has(raw))
+      return
+    if (uno.isBlocked(raw)) {
+      blocked.add(raw)
+      return
+    }
+    let current = raw
+    for (const p of uno.config.preprocess)
+      current = p(raw)!
+    const applied = await uno.matchVariants(raw, current)
+    if (applied && uno.isBlocked(applied[1]))
+      blocked.add(raw)
+  }
+  return async (raw: string, matches: string[]) => {
+    const extracts = Array.from(await uno.applyExtractors(raw))
+    await Promise.all(extracts.map(matchBlocked))
+    return matches.every(m => blocked.has(m))
+  }
+}
+
 describe('presetBlock', () => {
   const uno = createGenerator({
-    presets: [presetBlock({
-      ignores: [
-        'w-4px',
-      ],
-    })],
+    presets: [
+      presetUno(),
+      presetBlock({
+        ignores: [
+          'w-4px',
+        ],
+      }),
+    ],
     blocklist: [
       /block-\d+/,
     ],
@@ -59,5 +86,11 @@ describe('presetBlock', () => {
 
   it('base blocklist', () => {
     expect(uno.isBlocked('block-1')).toBe(true)
+  })
+
+  it('match variants', async () => {
+    const matchBlocked = createBlockMatcher(uno)
+    const rs = await matchBlocked('!w-100px w-30 p-10 lh-40px', ['!w-100px', 'lh-40px'])
+    expect(rs).toBe(true)
   })
 })
