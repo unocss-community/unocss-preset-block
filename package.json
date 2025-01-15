@@ -63,6 +63,7 @@
     "@babel/types": "^7.26.5",
     "@curev/eslint-config": "0.4.0",
     "@types/node": "^20.17.13",
+    "@vitest/coverage-v8": "^2.1.8",
     "bumpp": "^9.10.1",
     "eslint": "^9.18.0",
     "lint-staged": "^15.3.0",
