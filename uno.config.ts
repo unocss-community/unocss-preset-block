@@ -1,5 +1,5 @@
-import { defineConfig, presetUno } from 'unocss'
-import { presetBlock } from './src'
+import { defineConfig, presetUno } from "unocss";
+import { presetBlock } from "./src";
 
 // Just for Vscode Extension
 
@@ -8,4 +8,4 @@ export default defineConfig({
     presetUno(),
     presetBlock(),
   ],
-})
+});

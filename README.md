@@ -3,7 +3,7 @@
 UnoCSS Preset Block.
 
 ## Features
-- 🔥 Disable non-standard unocss class names 
+- 🔥 Disable non-standard unocss class names
 
 ## Usage
 ```shell
@@ -12,15 +12,15 @@ pnpm i -D unocss-preset-block unocss
 
 ```ts
 // uno.config.ts
-import { defineConfig } from 'unocss'
-import { presetBlock } from 'unocss-preset-block'
+import { defineConfig } from "unocss";
+import { presetBlock } from "unocss-preset-block";
 
 export default defineConfig({
   presets: [
     // ...
     presetBlock(),
   ],
-})
+});
 ```
 
 ## Rules
@@ -54,15 +54,14 @@ Recommended to work with [@unocss/eslint-plugin](https://github.com/unocss/unocs
 module.exports = {
   plugins: [
     // ...
-    '@unocss',
+    "@unocss",
   ],
   rules: {
     // ...
-    '@unocss/blocklist': ['error']
+    "@unocss/blocklist": ["error"]
   },
-}
+};
 ```
-
 
 ## License
 
